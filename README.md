@@ -50,7 +50,7 @@ The implemented experiments can be found in the `All Experiments.ipynb` notebook
 MINE relies on a statistics network `T` which takes as input two variables X, Y and estimates the mutual information MI(X,Y).
 
 ```python
-from mine import Mine
+from mine.models.mine import Mine
 statistics_network = nn.Sequential(
     nn.Linear(x_dim + y_dim, 100),
     nn.ReLU(),
