@@ -3,15 +3,15 @@ import torch.nn as nn
 import numpy as np
 import itertools
 
-from models.layers import LinearDiscriminator, LinearGenerator, DCGanDiscriminator, DCGanGenerator
-from models.adaptive_gradient_clipping import adaptive_gradient_clipping_
+from mine.models.layers import LinearDiscriminator, LinearGenerator, DCGanDiscriminator, DCGanGenerator
+from mine.models.adaptive_gradient_clipping import adaptive_gradient_clipping_
 
 import pytorch_lightning as pl
 import torchvision
 import random
 import matplotlib.pyplot as plt
 
-from datasets import to_onehot
+from mine.datasets import to_onehot
 
 
 class GAN(pl.LightningModule):

@@ -2,9 +2,9 @@ import itertools
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from datasets import load_dataloader
-from models.mine import Mine
-from utils.helpers import AverageMeter
+from mine.datasets import load_dataloader
+from mine.models.mine import Mine
+from mine.utils.helpers import AverageMeter
 from tqdm import tqdm
 import numpy as np
 import random

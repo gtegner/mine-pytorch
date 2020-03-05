@@ -16,7 +16,7 @@ Many mutual information estimators have been proposed in recent years as the int
 ```
 git clone github.com/gtegner/mine-pytorch
 cd mine-pytorch
-pip install -r requirements.txt
+pip install -e .
 ```
 
 Some of the code uses Pytorch Lightning [4] for training and evaluation. 

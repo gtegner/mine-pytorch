@@ -9,14 +9,14 @@ from torch.autograd import Variable
 from torchvision import datasets
 from torchvision.transforms import transforms
 
-from models.gan import GAN
+from mine.models.gan import GAN
 
-from datasets import FunctionDataset, MultivariateNormalDataset
-from models.layers import ConcatLayer, CustomSequential
+from mine.datasets import FunctionDataset, MultivariateNormalDataset
+from mine.models.layers import ConcatLayer, CustomSequential
 
 import pytorch_lightning as pl
 from pytorch_lightning import Trainer
-import utils
+import mine.utils
 
 torch.autograd.set_detect_anomaly(True)
 

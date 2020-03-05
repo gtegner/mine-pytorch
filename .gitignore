@@ -3,3 +3,4 @@ __pycache__/
 lightning_logs/
 results/
 .vscode/
+*.egg-info/

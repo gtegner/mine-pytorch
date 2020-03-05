@@ -1,7 +1,7 @@
-from models.bidirectional import BiGAN
-from models.information_bottleneck import IBNetwork
-from models.gan import GAN
-from models.mine import T, EnergyLoss
+from mine.models.bidirectional import BiGAN
+from mine.models.information_bottleneck import IBNetwork
+from mine.models.gan import GAN
+from mine.models.mine import T, EnergyLoss
 
 import argparse
 

@@ -5,8 +5,8 @@ import numpy as np
 import abc
 
 from datasets import load_dataloader
-from models.mine import T, Mine
-from models.gan import LinearGenerator, LinearDiscriminator
+from mine.models.mine import T, Mine
+from mine.models.gan import LinearGenerator, LinearDiscriminator
 import pytorch_lightning as pl
 from pytorch_lightning import Trainer
 
