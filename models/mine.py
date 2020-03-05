@@ -31,36 +31,15 @@ class EMALoss(torch.autograd.Function):
     @staticmethod
     def forward(ctx, input, running_ema):
         ctx.save_for_backward(input, running_ema)
-        # input_log_sum_exp = torch.logsumexp(
-        #     input, 0) - math.log(input.shape[0])
-
         input_log_sum_exp = input.exp().mean().log()
-        # ctx.save_for_backward(input)
-        # ctx.ema = running_ema.clone().detach()  # .detach()
-        #print(input_log_sum_exp != input_log_sum_exp)
 
         return input_log_sum_exp
 
     @staticmethod
     def backward(ctx, grad_output):
         input, running_mean = ctx.saved_tensors
-        #input.requires_grad = False
-        #running_mean = ctx.ema
-        #running_mean.requires_grad = False
-
         grad = grad_output * input.exp().detach() / \
             (running_mean + EPS) / input.shape[0]
-
-        # print("inptu grad")
-        # print(torch.sum(running_mean))
-        # print(torch.sum(input))
-        # print(torch.sum(grad))
-
-        #print("torch sum", torch.sum(running_mean))
-        # mu = torch.logsumexp(t0, 0) - math.log(t0.shape[0])
-        # mu = mu.detach()
-        # grad = grad_output * t0.exp() / (torch.exp(mu) + EPS) / t0.shape[0]
-        # print("ISNAN", grad[grad > 5])
         return grad, None
 
 
@@ -69,17 +48,11 @@ def ema(mu, alpha, past_ema):
 
 
 def ema_loss(x, running_mean, alpha):
-    #t_exp = torch.exp(x.detach().clone()).mean().detach()
     t_exp = torch.exp(torch.logsumexp(x, 0) - math.log(x.shape[0])).detach()
-    # print("\n TEXP", torch.sum(t_exp))
     if running_mean == 0:
         running_mean = t_exp
     else:
         running_mean = ema(t_exp, alpha, running_mean.item())
-
-    # Detach from computational graph
-    #running_mean = running_mean.detach()
-
     t_log = EMALoss.apply(x, running_mean)
 
     # Recalculate ema
