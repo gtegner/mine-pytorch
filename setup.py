@@ -19,7 +19,7 @@ setuptools.setup(
     install_requires = [
         'pytorch_lightning==0.6.0',
         'matplotlib==3.1.2',
-        'numpy==1.17.4',
+        'numpy==1.22.0',
         'tqdm==4.40.2',
         'torch==1.3.1',
         'torchvision==0.4.2',
